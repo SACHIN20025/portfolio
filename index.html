@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachin Singh | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+    body {
+      background: #0e1117;
+      color: #ffffff;
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Light theme */
+    body.light-theme {
+      background: #f5f7fa;
+      color: #0e1117;
+    }
+
+    body.light-theme header { background: #ffffff; }
+    body.light-theme footer { background: #eaeaea; }
+
+    body.light-theme .skill,
+    body.light-theme .project {
+      background: #ffffff;
+      color: #0e1117;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    body.light-theme .project a {
+      background: #4dabf7;
+      color: #000;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0e1117;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 { font-size: 24px; font-weight: 600; cursor: pointer; }
+
+    nav a {
+      margin-left: 20px;
+      font-size: 15px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    section { padding: 80px 10%; position: relative; }
+
+    .hero { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+
+    .hero-text { flex: 1; }
+    .hero-text h2 { font-size: 40px; margin-bottom: 10px; }
+    .hero-text h3 { font-size: 22px; color: #4dabf7; margin-bottom: 20px; }
+    .hero-text p { max-width: 500px; opacity: 0.9; }
+
+    .hero-text button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 6px;
+      background: #4dabf7;
+      color: #000;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .hero-text button:hover { transform: scale(1.05); }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #4dabf7;
+      margin: 10px auto 0;
+      border-radius: 3px;
+    }
+
+    .about p { max-width: 800px; margin: auto; text-align: center; opacity: 0.9; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .skill {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      background: #4dabf7;
+      color: #000;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      background: #4dabf7;
+      color: #000;
+    }
+
+    .project h4 { margin-bottom: 10px; }
+    .project p { font-size: 14px; opacity: 0.85; }
+
+    .project a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #ffffff;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .contact { text-align: center; }
+    .contact p { margin-bottom: 20px; }
+
+    .contact a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #4dabf7;
+      color: #000;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #0b0e13;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4dabf7;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      color: #000;
+      z-index: 1000;
+    }
+
+    .floating-text {
+      position: absolute;
+      font-size: 60px;
+      color: rgba(77, 171, 247, 0.05);
+      animation: floatText 15s infinite linear;
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h2 { font-size: 32px; }
+      header { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Sachin Singh</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Hello, I'm Sachin </h2>
+    <h3>Frontend Developer</h3>
+    <p>I build clean, responsive, and user-friendly web applications using modern frontend technologies.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Hire Me</button>
+  </div>
+  
+</section>
+
+<section id="about" class="about">
+  <h2 class="section-title">About Me</h2>
+  <p>I am a Computer Science engineering student passionate about frontend development and AI-powered applications.</p>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">HTML5</div>
+    <div class="skill">CSS3</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">React.js</div>
+    <div class="skill">Tailwind CSS</div>
+    <div class="skill">Python</div>
+    <div class="skill">Machine Learning</div>
+    <div class="skill">Git & GitHub</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project">
+      <h4>Persional Portfolio</h4>
+      <p>HTML, CSS, JavaScript.</p>
+      <a href="https://github.com/SACHIN20025/Persional-Portfolio" target="_blank">View Project</a>
+    </div>
+    <div class="project">
+      <h4>SMS Spam Detection System</h4>
+      <p>NLP-based machine learning project.</p>
+      <a href="https://github.com/SACHIN20025/sms-spam-dedection-using-nlp" target="_blank">View Project</a>
+    </div>
+    <div class="project">
+      <h4>AI Medical Diagnosis System</h4>
+      <p>ML + ChatGPT based diagnosis system.</p>
+      <a href="https://github.com/sachinsingh/ai-medical-diagnosis" target="_blank">View Project</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact Me</h2>
+  <p>Interested in working together?</p>
+  <a href="mailto:sachinsingh@email.com">Email Me</a>
+</section>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+<footer>© 2025 Sachin Singh | All Rights Reserved</footer>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+    const btn = document.querySelector('.theme-toggle');
+    btn.textContent = document.body.classList.contains('light-theme') ? '🌞' : '🌙';
+  }
+</script>
+
+</body>
+</html>
